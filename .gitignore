@@ -1,0 +1,50 @@
+# Neovim swap/backup/undo files
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.old
+*.orig
+
+# Undo history (if using persistent undo)
+.undodir/
+**/.undodir/
+
+# Session files
+session.vim
+Session.vim
+
+# Lazy.nvim plugin directory (auto-generated)
+lazy-lock.json
+/lazy-lock.json
+
+# Lazy.nvim state (should not be committed)
+/lua/lazy-lock.json
+**/lazy-lock.json
+
+# Lazy.nvim plugin install path (default)
+# If using standard config (e.g., ~/.config/nvim/)
+# the default plugin path is: ~/.local/share/nvim/lazy
+# So, ignore .local if tracking whole nvim setup
+.local/
+**/.local/
+
+# Backup and temp folders in Neovim
+/backup/
+swap/
+undo/
+
+# Node modules (if using LSPs or tools that install here)
+node_modules/
+**/node_modules/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# If using packer.nvim as well (optional)
+/site/pack/

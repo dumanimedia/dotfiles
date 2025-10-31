@@ -88,9 +88,9 @@ vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
 -- Save in all modes
-vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file" })
-vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "Save file" })
-vim.keymap.set("v", "<C-s>", "<Esc>:w<CR>gv", { desc = "Save file" })
+vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save file' })
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { desc = 'Save file' })
+vim.keymap.set('v', '<C-s>', '<Esc>:w<CR>gv', { desc = 'Save file' })
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -755,6 +755,9 @@ require('lazy').setup({
         },
         opts = {},
       },
+      {
+        'Exafunction/codeium.nvim',
+      },
       'folke/lazydev.nvim',
     },
     --- @module 'blink.cmp'
@@ -804,9 +807,10 @@ require('lazy').setup({
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev', 'codeium' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
         },
       },
 

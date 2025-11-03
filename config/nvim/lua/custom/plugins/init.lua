@@ -191,7 +191,7 @@ return {
         dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
         dashboard.button('f', '  Find file', ':Telescope find_files <CR>'),
         dashboard.button('r', '  Recent files', ':Telescope oldfiles <CR>'),
-        dashboard.button("s", "  Restore session", ":Telescope session-lens search_session<CR>"),
+        dashboard.button('s', '  Restore session', ':Telescope session-lens search_session<CR>'),
         dashboard.button('q', '  Quit', ':qa<CR>'),
       }
 
@@ -206,46 +206,46 @@ return {
     end,
   },
 
-{
-    "rmagatti/auto-session",
-    version = "*", -- latest stable (or use commit = "<hash>" if needed)
+  {
+    'rmagatti/auto-session',
+    version = '*', -- latest stable (or use commit = "<hash>" if needed)
     lazy = false,
     config = function()
-      require("auto-session").setup({
-        log_level = "error",
+      require('auto-session').setup {
+        log_level = 'error',
         auto_session_enabled = true,
         auto_save_enabled = true,
         auto_restore_enabled = true,
-      })
+      }
     end,
   },
   {
-    "rmagatti/session-lens",
-    commit = "main", -- optionally specify a known good commit hash if errors persist
+    'rmagatti/session-lens',
+    commit = 'main', -- optionally specify a known good commit hash if errors persist
     dependencies = {
-      "rmagatti/auto-session",
-      "nvim-telescope/telescope.nvim",
+      'rmagatti/auto-session',
+      'nvim-telescope/telescope.nvim',
     },
     config = function()
       -- Safe setup call
-      local ok, session_lens = pcall(require, "session-lens")
+      local ok, session_lens = pcall(require, 'session-lens')
       if ok then
-        session_lens.setup({
-          path_display = { "shorten" },
+        session_lens.setup {
+          path_display = { 'shorten' },
           theme_conf = { border = true },
           previewer = false,
-        })
-        require("telescope").load_extension("session-lens")
-        vim.keymap.set(
-          "n",
-          "<leader>ss",
-          "<cmd>Telescope session-lens search_session<CR>",
-          { desc = "Search sessions" }
-        )
+        }
+        require('telescope').load_extension 'session-lens'
+        vim.keymap.set('n', '<leader>ss', '<cmd>Telescope session-lens search_session<CR>', { desc = 'Search sessions' })
       else
-        vim.notify("Session-lens failed to load", vim.log.levels.WARN)
+        vim.notify('Session-lens failed to load', vim.log.levels.WARN)
       end
     end,
   },
-
+  {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      require('scrollbar').setup {}
+    end,
+  },
 }
